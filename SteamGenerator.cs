@@ -18,8 +18,8 @@ namespace SteamGeneratorLayout
         {
             var x = GeometryData.SideDistance;
             var y = GeometryData.InnerDiameter / 2 - GeometryData.DistanceFromHorizontalAxis;
-            var packageWidth = GeometryData.HorizontalStep * GeometryData.PackageWidth;
-            var gap = (GeometryData.InnerDiameter - 2 * x - 4 * packageWidth) / 4;
+            var packageWidth = GeometryData.HorizontalStep * GeometryData.PackageWidth + GeometryData.TubeDiameter;
+            var gap = (GeometryData.InnerDiameter - 2 * x - 4 * packageWidth) / 3;
 
             for(int i = 0; i < 4; i++)
             {

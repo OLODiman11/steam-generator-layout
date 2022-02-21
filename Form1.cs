@@ -13,10 +13,14 @@ namespace SteamGeneratorLayout
         public Form1()
         {
             InitializeComponent();
+            CalculateRatio();
             SetGeometryAndCreateGenerator();
+        }
+
+        private void CalculateRatio()
+        {
             var panel = splitContainer1.Panel2;
-            Ratio = (panel.Width - panel.Padding.Left - panel.Padding.Right) / (float) innerDiameter.Value;
-            Paint += DrawGenerator;
+            Ratio = (panel.Width - panel.Padding.Left - panel.Padding.Right) / (float)innerDiameter.Value;
         }
 
         private void SetGeometryAndCreateGenerator()
@@ -36,23 +40,34 @@ namespace SteamGeneratorLayout
 
         private void applyButton_Click(object sender, EventArgs e)
         {
+            CalculateRatio();
             SetGeometryAndCreateGenerator();
+            splitContainer1.Panel2.Invalidate();
         }
 
-        private void DrawGenerator(object sender, PaintEventArgs e)
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
             if (_steamGenerator == null) return;
 
             var g = e.Graphics;
+            var panel = splitContainer1.Panel2;
+            var startX = panel.Padding.Left;
+            var startY = panel.Padding.Right;
+            var panelWidth = panel.Width - panel.Padding.Left - panel.Padding.Right;
+            var panelHeight = panel.Height - panel.Padding.Top - panel.Padding.Bottom;
+
+            var generatorDiameter = (float)innerDiameter.Value;
+            g.DrawEllipse(Pens.Blue, startX, startY, generatorDiameter * Ratio, generatorDiameter * Ratio);
+
             var packages = _steamGenerator.Packages;
-            var diameter = (float) tubeDiameter.Value;
+            var diameter = (float)tubeDiameter.Value;
             foreach (var package in packages)
             {
                 foreach (var tube in package.Tubes)
                 {
-                    var lrCornerX = tube.X - diameter;
-                    var lrCornerY = tube.Y - diameter;
-                    g.DrawEllipse(Pens.Blue, lrCornerX * Ratio, lrCornerY * Ratio, diameter, diameter);
+                    var lrCornerX = tube.X - diameter / 2;
+                    var lrCornerY = tube.Y - diameter / 2;
+                    g.DrawEllipse(Pens.Blue, startX + lrCornerX * Ratio, startY + lrCornerY * Ratio, diameter * Ratio, diameter * Ratio);
                 }
             }
         }

@@ -173,6 +173,7 @@ namespace SteamGeneratorLayout
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(984, 561);
             this.splitContainer1.SplitterDistance = 419;
             this.splitContainer1.TabIndex = 6;
@@ -193,7 +194,7 @@ namespace SteamGeneratorLayout
             this.tubeDiameter.Size = new System.Drawing.Size(90, 23);
             this.tubeDiameter.TabIndex = 30;
             this.tubeDiameter.Value = new decimal(new int[] {
-            1,
+            16,
             0,
             0,
             0});
@@ -230,11 +231,16 @@ namespace SteamGeneratorLayout
             // distanceFromHorizontalAxis
             // 
             this.distanceFromHorizontalAxis.Location = new System.Drawing.Point(218, 291);
+            this.distanceFromHorizontalAxis.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.distanceFromHorizontalAxis.Name = "distanceFromHorizontalAxis";
             this.distanceFromHorizontalAxis.Size = new System.Drawing.Size(90, 23);
             this.distanceFromHorizontalAxis.TabIndex = 26;
             this.distanceFromHorizontalAxis.Value = new decimal(new int[] {
-            1,
+            200,
             0,
             0,
             0});
@@ -279,11 +285,16 @@ namespace SteamGeneratorLayout
             // packageDiameter
             // 
             this.packageDiameter.Location = new System.Drawing.Point(106, 263);
+            this.packageDiameter.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             this.packageDiameter.Name = "packageDiameter";
             this.packageDiameter.Size = new System.Drawing.Size(90, 23);
             this.packageDiameter.TabIndex = 21;
             this.packageDiameter.Value = new decimal(new int[] {
-            1,
+            4100,
             0,
             0,
             0});
@@ -295,7 +306,7 @@ namespace SteamGeneratorLayout
             this.packageWidth.Size = new System.Drawing.Size(90, 23);
             this.packageWidth.TabIndex = 20;
             this.packageWidth.Value = new decimal(new int[] {
-            1,
+            23,
             0,
             0,
             0});
@@ -303,11 +314,16 @@ namespace SteamGeneratorLayout
             // sideDistance
             // 
             this.sideDistance.Location = new System.Drawing.Point(129, 209);
+            this.sideDistance.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
             this.sideDistance.Name = "sideDistance";
             this.sideDistance.Size = new System.Drawing.Size(90, 23);
             this.sideDistance.TabIndex = 19;
             this.sideDistance.Value = new decimal(new int[] {
-            1,
+            200,
             0,
             0,
             0});
@@ -395,7 +411,7 @@ namespace SteamGeneratorLayout
             this.horizontalStep.Size = new System.Drawing.Size(90, 23);
             this.horizontalStep.TabIndex = 11;
             this.horizontalStep.Value = new decimal(new int[] {
-            1,
+            29,
             0,
             0,
             0});
@@ -412,7 +428,7 @@ namespace SteamGeneratorLayout
             this.verticalStep.Size = new System.Drawing.Size(90, 23);
             this.verticalStep.TabIndex = 10;
             this.verticalStep.Value = new decimal(new int[] {
-            1,
+            24,
             0,
             0,
             0});
