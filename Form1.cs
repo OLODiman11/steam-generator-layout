@@ -43,6 +43,14 @@ namespace SteamGeneratorLayout
             CalculateRatio();
             SetGeometryAndCreateGenerator();
             splitContainer1.Panel2.Invalidate();
+            var counts = new int[4];
+            int i = 0;
+            foreach (var package in _steamGenerator.Packages) counts[i++] = package.Tubes.Count;
+            tubesCount1.Text = counts[0].ToString();
+            tubesCount2.Text = counts[1].ToString();
+            tubesCount3.Text = counts[2].ToString();
+            tubesCount4.Text = counts[3].ToString();
+            tubesCount.Text = (counts[0] + counts[1] + counts[2] + counts[3]).ToString();
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -56,18 +64,16 @@ namespace SteamGeneratorLayout
             var panelWidth = panel.Width - panel.Padding.Left - panel.Padding.Right;
             var panelHeight = panel.Height - panel.Padding.Top - panel.Padding.Bottom;
 
-            var generatorDiameter = (float)innerDiameter.Value;
-            g.DrawEllipse(Pens.Blue, startX, startY, generatorDiameter * Ratio, generatorDiameter * Ratio);
+            var generatorDiameter = innerDiameter.Value;
+            g.DrawEllipse(Pens.Blue, startX, startY, (float) generatorDiameter * Ratio, (float)generatorDiameter * Ratio);
 
             var packages = _steamGenerator.Packages;
-            var diameter = (float)tubeDiameter.Value;
+            var diameter = tubeDiameter.Value;
             foreach (var package in packages)
             {
                 foreach (var tube in package.Tubes)
                 {
-                    var lrCornerX = tube.X - diameter / 2;
-                    var lrCornerY = tube.Y - diameter / 2;
-                    g.DrawEllipse(Pens.Blue, startX + lrCornerX * Ratio, startY + lrCornerY * Ratio, diameter * Ratio, diameter * Ratio);
+                    g.DrawEllipse(Pens.Blue, startX + tube.X * Ratio, startY + tube.Y * Ratio, (float)diameter * Ratio, (float)diameter * Ratio);
                 }
             }
         }

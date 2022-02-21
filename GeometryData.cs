@@ -9,7 +9,7 @@
         public static float SideDistance { get; private set; }
         public static float TubeDiameter { get; private set; }
         public static float DistanceFromHorizontalAxis { get; private set; }
-        public static int PackageWidth { get; private set; }
+        public static float PackageWidth { get; private set; }
 
         public static void SetGeometry(float innerDiameter, float horizontalStep, float verticalStep, float packageDiameter, float sideDistance, float tubeDiameter, float distanceUpFromCenter, int packageWidth)
         {

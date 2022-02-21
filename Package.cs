@@ -8,7 +8,7 @@ namespace SteamGeneratorLayout
         public readonly float Y;
 
         private List<Tube> _tubes;
-        public IEnumerable<Tube> Tubes => _tubes;
+        public List<Tube> Tubes => _tubes;
 
         public Package(float x, float y)
         {
@@ -21,11 +21,11 @@ namespace SteamGeneratorLayout
 
         private void LayoutTubes()
         {
-            var y = Y + GeometryData.TubeDiameter / 2;
+            var y = Y;
 
             while(y  < GeometryData.InnerDiameter)
             {
-                var x = X + GeometryData.TubeDiameter / 2;
+                var x = X;
                 for (int i = 0; i < GeometryData.PackageWidth; i++)
                 {
                     if(DoesFit(x, y)) _tubes.Add(new Tube(x, y));
@@ -38,8 +38,8 @@ namespace SteamGeneratorLayout
 
         private bool DoesFit(float x, float y)
         {
-            x -= GeometryData.InnerDiameter / 2;
-            y -= GeometryData.InnerDiameter / 2;
+            x += GeometryData.TubeDiameter / 2 - GeometryData.InnerDiameter / 2;
+            y += GeometryData.TubeDiameter / 2 - GeometryData.InnerDiameter / 2;
             var sqrMagnitude = x * x + y * y;
             var centerRadius = GeometryData.PackageDiameter / 2 - GeometryData.TubeDiameter / 2;
             return sqrMagnitude <= centerRadius * centerRadius;

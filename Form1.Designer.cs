@@ -36,6 +36,11 @@ namespace SteamGeneratorLayout
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tubesCount4 = new System.Windows.Forms.Label();
+            this.tubesCount3 = new System.Windows.Forms.Label();
+            this.tubesCount2 = new System.Windows.Forms.Label();
+            this.tubesCount1 = new System.Windows.Forms.Label();
+            this.tubesCount = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tubeDiameter = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
@@ -139,6 +144,11 @@ namespace SteamGeneratorLayout
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.tubesCount4);
+            this.splitContainer1.Panel1.Controls.Add(this.tubesCount3);
+            this.splitContainer1.Panel1.Controls.Add(this.tubesCount2);
+            this.splitContainer1.Panel1.Controls.Add(this.tubesCount1);
+            this.splitContainer1.Panel1.Controls.Add(this.tubesCount);
             this.splitContainer1.Panel1.Controls.Add(this.label18);
             this.splitContainer1.Panel1.Controls.Add(this.tubeDiameter);
             this.splitContainer1.Panel1.Controls.Add(this.label19);
@@ -177,6 +187,51 @@ namespace SteamGeneratorLayout
             this.splitContainer1.Size = new System.Drawing.Size(984, 561);
             this.splitContainer1.SplitterDistance = 419;
             this.splitContainer1.TabIndex = 6;
+            // 
+            // tubesCount4
+            // 
+            this.tubesCount4.AutoSize = true;
+            this.tubesCount4.Location = new System.Drawing.Point(162, 391);
+            this.tubesCount4.Name = "tubesCount4";
+            this.tubesCount4.Size = new System.Drawing.Size(44, 15);
+            this.tubesCount4.TabIndex = 36;
+            this.tubesCount4.Text = "label17";
+            // 
+            // tubesCount3
+            // 
+            this.tubesCount3.AutoSize = true;
+            this.tubesCount3.Location = new System.Drawing.Point(112, 391);
+            this.tubesCount3.Name = "tubesCount3";
+            this.tubesCount3.Size = new System.Drawing.Size(44, 15);
+            this.tubesCount3.TabIndex = 35;
+            this.tubesCount3.Text = "label17";
+            // 
+            // tubesCount2
+            // 
+            this.tubesCount2.AutoSize = true;
+            this.tubesCount2.Location = new System.Drawing.Point(62, 391);
+            this.tubesCount2.Name = "tubesCount2";
+            this.tubesCount2.Size = new System.Drawing.Size(44, 15);
+            this.tubesCount2.TabIndex = 34;
+            this.tubesCount2.Text = "label17";
+            // 
+            // tubesCount1
+            // 
+            this.tubesCount1.AutoSize = true;
+            this.tubesCount1.Location = new System.Drawing.Point(12, 391);
+            this.tubesCount1.Name = "tubesCount1";
+            this.tubesCount1.Size = new System.Drawing.Size(44, 15);
+            this.tubesCount1.TabIndex = 33;
+            this.tubesCount1.Text = "label17";
+            // 
+            // tubesCount
+            // 
+            this.tubesCount.AutoSize = true;
+            this.tubesCount.Location = new System.Drawing.Point(12, 363);
+            this.tubesCount.Name = "tubesCount";
+            this.tubesCount.Size = new System.Drawing.Size(44, 15);
+            this.tubesCount.TabIndex = 32;
+            this.tubesCount.Text = "label17";
             // 
             // label18
             // 
@@ -306,7 +361,7 @@ namespace SteamGeneratorLayout
             this.packageWidth.Size = new System.Drawing.Size(90, 23);
             this.packageWidth.TabIndex = 20;
             this.packageWidth.Value = new decimal(new int[] {
-            23,
+            30,
             0,
             0,
             0});
@@ -428,7 +483,7 @@ namespace SteamGeneratorLayout
             this.verticalStep.Size = new System.Drawing.Size(90, 23);
             this.verticalStep.TabIndex = 10;
             this.verticalStep.Value = new decimal(new int[] {
-            24,
+            29,
             0,
             0,
             0});
@@ -502,6 +557,11 @@ namespace SteamGeneratorLayout
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown tubeDiameter;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label tubesCount4;
+        private System.Windows.Forms.Label tubesCount3;
+        private System.Windows.Forms.Label tubesCount2;
+        private System.Windows.Forms.Label tubesCount1;
+        private System.Windows.Forms.Label tubesCount;
     }
 }
 

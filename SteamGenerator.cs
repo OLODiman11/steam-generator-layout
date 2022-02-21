@@ -5,7 +5,7 @@ namespace SteamGeneratorLayout
     public class SteamGenerator
     {
         private List<Package> _packages;
-        public IEnumerable<Package> Packages => _packages;
+        public List<Package> Packages => _packages;
 
         public SteamGenerator()
         {
@@ -18,7 +18,7 @@ namespace SteamGeneratorLayout
         {
             var x = GeometryData.SideDistance;
             var y = GeometryData.InnerDiameter / 2 - GeometryData.DistanceFromHorizontalAxis;
-            var packageWidth = GeometryData.HorizontalStep * GeometryData.PackageWidth + GeometryData.TubeDiameter;
+            var packageWidth = GeometryData.HorizontalStep * (GeometryData.PackageWidth - 1) + GeometryData.TubeDiameter;
             var gap = (GeometryData.InnerDiameter - 2 * x - 4 * packageWidth) / 3;
 
             for(int i = 0; i < 4; i++)
