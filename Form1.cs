@@ -153,6 +153,7 @@ namespace SteamGeneratorLayout
         private void CalculateAndSetPassageWidth()
         {
             var summ = innerDiameter.Value - 2 * sideDistance.Value - 4 * horizontalStep.Value * (packageWidth.Value - 1);
+            if (summ < 0) return;
             summPassageWidth.Text = (summ).ToString();
             centerPassageWidth.Maximum = summ;
             leftPassageWidth.Maximum = summ;
