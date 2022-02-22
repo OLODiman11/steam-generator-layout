@@ -18,12 +18,12 @@ namespace SteamGeneratorLayout
         private void CreatePackages()
         {
             var y = GeometryData.InnerDiameter / 2 - GeometryData.DistanceFromHorizontalAxis;
-            var packageWidth = GeometryData.HorizontalStep * (GeometryData.PackageWidth - 1) + GeometryData.TubeDiameter;
-            var gap = (GeometryData.InnerDiameter - 2 * GeometryData.SideDistance - 4 * packageWidth) / 3;
-
+            var packageWidth = GeometryData.HorizontalStep * (GeometryData.PackageWidth - 1);
+            var sum = 0f;
             for(int i = 0; i < 4; i++)
             {
-                var position = new Vector2(GeometryData.SideDistance + (packageWidth + gap) * i, y);
+                sum += GeometryData.PassageWidths[i];
+                var position = new Vector2(GeometryData.SideDistance + packageWidth * i + sum, y);
                 _packages.Add(new Package(position));
             }
         }

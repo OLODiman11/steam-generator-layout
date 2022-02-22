@@ -24,9 +24,8 @@ namespace SteamGeneratorLayout
             {
                 for (int i = 0; i < GeometryData.PackageWidth; i++)
                 {
-                    var offset = new Vector2(GeometryData.TubeDiameter / 2);
                     var step = new Vector2(GeometryData.HorizontalStep * i, GeometryData.VerticalStep * j);
-                    position = Position + offset + step;
+                    position = Position + step;
                     if(DoesFit(position)) Tubes.Add(position);
                 }
                 j++;
@@ -36,7 +35,7 @@ namespace SteamGeneratorLayout
         private bool DoesFit(Vector2 position)
         {
             var vector = position - new Vector2(GeometryData.InnerDiameter / 2);
-            var radiusToTubeCenter = (GeometryData.PackageDiameter - GeometryData.TubeDiameter) / 2;
+            var radiusToTubeCenter = GeometryData.PackageDiameter / 2;
             return vector.LengthSquared() <= radiusToTubeCenter * radiusToTubeCenter;
         }
     }

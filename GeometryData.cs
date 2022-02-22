@@ -1,4 +1,6 @@
-﻿namespace SteamGeneratorLayout
+﻿using System.Collections.Generic;
+
+namespace SteamGeneratorLayout
 {
     public static class GeometryData
     {
@@ -10,8 +12,9 @@
         public static float TubeDiameter { get; private set; }
         public static float DistanceFromHorizontalAxis { get; private set; }
         public static float PackageWidth { get; private set; }
+        public static List<float> PassageWidths { get; private set; }
 
-        public static void SetGeometry(float innerDiameter, float horizontalStep, float verticalStep, float packageDiameter, float sideDistance, float tubeDiameter, float distanceUpFromCenter, int packageWidth)
+        public static void SetGeometry(float innerDiameter, float horizontalStep, float verticalStep, float packageDiameter, float sideDistance, float tubeDiameter, float distanceUpFromCenter, int packageWidth, List<float> passageWidths)
         {
             InnerDiameter = innerDiameter;
             HorizontalStep = horizontalStep;
@@ -21,6 +24,7 @@
             TubeDiameter = tubeDiameter;
             DistanceFromHorizontalAxis = distanceUpFromCenter;
             PackageWidth = packageWidth;
+            PassageWidths = passageWidths;
         }
     }
 }
