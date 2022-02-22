@@ -1,48 +1,43 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
 
 namespace SteamGeneratorLayout
 {
     public class Package
     {
-        public readonly float X;
-        public readonly float Y;
+        public readonly Vector2 Position;
+        public readonly List<Vector2> Tubes;
 
-        private List<Tube> _tubes;
-        public List<Tube> Tubes => _tubes;
-
-        public Package(float x, float y)
+        public Package(Vector2 position)
         {
-            X = x;
-            Y = y;
+            Position = position;
 
-            _tubes = new List<Tube>(4000);
+            Tubes = new List<Vector2>(3500);
             LayoutTubes();
         }
 
         private void LayoutTubes()
         {
-            var y = Y;
-
-            while(y  < GeometryData.InnerDiameter)
+            Vector2 position = Vector2.Zero;
+            int j = 0;
+            while(position.Y  < GeometryData.InnerDiameter)
             {
-                var x = X;
                 for (int i = 0; i < GeometryData.PackageWidth; i++)
                 {
-                    if(DoesFit(x, y)) _tubes.Add(new Tube(x, y));
-
-                    x += GeometryData.HorizontalStep;
+                    var offset = new Vector2(GeometryData.TubeDiameter / 2);
+                    var step = new Vector2(GeometryData.HorizontalStep * i, GeometryData.VerticalStep * j);
+                    position = Position + offset + step;
+                    if(DoesFit(position)) Tubes.Add(position);
                 }
-                y += GeometryData.VerticalStep;
+                j++;
             }
         }
 
-        private bool DoesFit(float x, float y)
+        private bool DoesFit(Vector2 position)
         {
-            x += GeometryData.TubeDiameter / 2 - GeometryData.InnerDiameter / 2;
-            y += GeometryData.TubeDiameter / 2 - GeometryData.InnerDiameter / 2;
-            var sqrMagnitude = x * x + y * y;
-            var centerRadius = GeometryData.PackageDiameter / 2 - GeometryData.TubeDiameter / 2;
-            return sqrMagnitude <= centerRadius * centerRadius;
+            var vector = position - new Vector2(GeometryData.InnerDiameter / 2);
+            var radiusToTubeCenter = (GeometryData.PackageDiameter - GeometryData.TubeDiameter) / 2;
+            return vector.LengthSquared() <= radiusToTubeCenter * radiusToTubeCenter;
         }
     }
 }

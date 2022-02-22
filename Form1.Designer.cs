@@ -64,8 +64,11 @@ namespace SteamGeneratorLayout
             this.horizontalStep = new System.Windows.Forms.NumericUpDown();
             this.verticalStep = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.saveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tubeDiameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceFromHorizontalAxis)).BeginInit();
@@ -75,6 +78,7 @@ namespace SteamGeneratorLayout
             ((System.ComponentModel.ISupportInitialize)(this.innerDiameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontalStep)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.verticalStep)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -144,6 +148,7 @@ namespace SteamGeneratorLayout
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.saveButton);
             this.splitContainer1.Panel1.Controls.Add(this.tubesCount4);
             this.splitContainer1.Panel1.Controls.Add(this.tubesCount3);
             this.splitContainer1.Panel1.Controls.Add(this.tubesCount2);
@@ -182,8 +187,7 @@ namespace SteamGeneratorLayout
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Size = new System.Drawing.Size(984, 561);
             this.splitContainer1.SplitterDistance = 419;
             this.splitContainer1.TabIndex = 6;
@@ -497,6 +501,26 @@ namespace SteamGeneratorLayout
             this.label5.TabIndex = 8;
             this.label5.Text = "Внутренний диаметр ПГ";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(541, 541);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(24, 521);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 37;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -511,6 +535,7 @@ namespace SteamGeneratorLayout
             this.Text = "Компановщик пакетов ТОТ";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tubeDiameter)).EndInit();
@@ -521,6 +546,7 @@ namespace SteamGeneratorLayout
             ((System.ComponentModel.ISupportInitialize)(this.innerDiameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.horizontalStep)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.verticalStep)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -562,6 +588,8 @@ namespace SteamGeneratorLayout
         private System.Windows.Forms.Label tubesCount2;
         private System.Windows.Forms.Label tubesCount1;
         private System.Windows.Forms.Label tubesCount;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button saveButton;
     }
 }
 

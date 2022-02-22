@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
 
 namespace SteamGeneratorLayout
 {
@@ -16,15 +17,14 @@ namespace SteamGeneratorLayout
 
         private void CreatePackages()
         {
-            var x = GeometryData.SideDistance;
             var y = GeometryData.InnerDiameter / 2 - GeometryData.DistanceFromHorizontalAxis;
             var packageWidth = GeometryData.HorizontalStep * (GeometryData.PackageWidth - 1) + GeometryData.TubeDiameter;
-            var gap = (GeometryData.InnerDiameter - 2 * x - 4 * packageWidth) / 3;
+            var gap = (GeometryData.InnerDiameter - 2 * GeometryData.SideDistance - 4 * packageWidth) / 3;
 
             for(int i = 0; i < 4; i++)
             {
-                _packages.Add(new Package(x, y));
-                x += packageWidth + gap;
+                var position = new Vector2(GeometryData.SideDistance + (packageWidth + gap) * i, y);
+                _packages.Add(new Package(position));
             }
         }
     }

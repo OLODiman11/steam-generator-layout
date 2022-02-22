@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Numerics;
 using System.Windows.Forms;
 
 namespace SteamGeneratorLayout
 {
     public partial class Form1 : Form
     {
-        public static float Ratio { get; private set; }
-
         private SteamGenerator _steamGenerator;
 
         public Form1()
         {
             InitializeComponent();
-            CalculateRatio();
             SetGeometryAndCreateGenerator();
         }
 
-        private void CalculateRatio()
+        private float CalculateRatio(float size, float lineThickness)
         {
-            var panel = splitContainer1.Panel2;
-            Ratio = (panel.Width - panel.Padding.Left - panel.Padding.Right) / (float)innerDiameter.Value;
+            return (size - lineThickness - 1) / GeometryData.InnerDiameter;
         }
 
         private void SetGeometryAndCreateGenerator()
@@ -40,9 +39,8 @@ namespace SteamGeneratorLayout
 
         private void applyButton_Click(object sender, EventArgs e)
         {
-            CalculateRatio();
             SetGeometryAndCreateGenerator();
-            splitContainer1.Panel2.Invalidate();
+            pictureBox1.Invalidate();
             var counts = new int[4];
             int i = 0;
             foreach (var package in _steamGenerator.Packages) counts[i++] = package.Tubes.Count;
@@ -53,29 +51,53 @@ namespace SteamGeneratorLayout
             tubesCount.Text = (counts[0] + counts[1] + counts[2] + counts[3]).ToString();
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             if (_steamGenerator == null) return;
 
             var g = e.Graphics;
-            var panel = splitContainer1.Panel2;
-            var startX = panel.Padding.Left;
-            var startY = panel.Padding.Right;
-            var panelWidth = panel.Width - panel.Padding.Left - panel.Padding.Right;
-            var panelHeight = panel.Height - panel.Padding.Top - panel.Padding.Bottom;
+            DrawGenerator(g, pictureBox1.Width, 1);
+        }
 
-            var generatorDiameter = innerDiameter.Value;
-            g.DrawEllipse(Pens.Blue, startX, startY, (float) generatorDiameter * Ratio, (float)generatorDiameter * Ratio);
+        private void DrawGenerator(Graphics g, int size, int lineThickness)
+        {
+            var ratio = CalculateRatio(size, lineThickness);
+            var pen = new Pen(Color.Blue, lineThickness);
+            var start = new Vector2(lineThickness / 2f / ratio);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            var vector4 = new Vector4(start, GeometryData.InnerDiameter, GeometryData.InnerDiameter) * ratio;
+            g.DrawEllipse(pen, vector4.X, vector4.Y, vector4.Z, vector4.W);
+
 
             var packages = _steamGenerator.Packages;
-            var diameter = tubeDiameter.Value;
+            var diameter = GeometryData.TubeDiameter;
             foreach (var package in packages)
             {
                 foreach (var tube in package.Tubes)
                 {
-                    g.DrawEllipse(Pens.Blue, startX + tube.X * Ratio, startY + tube.Y * Ratio, (float)diameter * Ratio, (float)diameter * Ratio);
+                    vector4 = new Vector4(start + tube, diameter, diameter) * ratio;
+                    g.DrawEllipse(pen, vector4.X, vector4.Y, vector4.Z, vector4.W);
                 }
             }
+            pen.Dispose();
+        }
+
+        private void SaveImage(string path, int size, int lineThickness)
+        {
+            var ratio = (size - lineThickness - 1) / GeometryData.InnerDiameter;
+            var bitMap = new Bitmap(size, size, PixelFormat.Format32bppArgb);
+            var g = Graphics.FromImage(bitMap);
+
+            DrawGenerator(g, size, lineThickness);
+
+            bitMap.Save(path);
+            g.Dispose();
+            bitMap.Dispose();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            SaveImage(@"d:/SG.png", 5000, 5);
         }
     }
 }
