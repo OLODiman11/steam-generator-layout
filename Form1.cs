@@ -26,23 +26,29 @@ namespace SteamGeneratorLayout
         private void SetGeometryAndCreateGenerator()
         {
             CalculateAndSetPassageWidth();
+            DontCalculateWidths();
+        }
+
+        private void DontCalculateWidths()
+        {
             GeometryData.SetGeometry(
-                (float)innerDiameter.Value,
-                (float)horizontalStep.Value,
-                (float)verticalStep.Value,
-                (float)(innerDiameter.Value - 2 * packageDiameter.Value),
-                (float)sideDistance.Value,
-                (float)tubeDiameter.Value,
-                (float)distanceFromHorizontalAxis.Value,
-                (int)packageWidth.Value,
-                new List<float>()
-                {
+                            (float)innerDiameter.Value,
+                            (float)horizontalStep.Value,
+                            (float)verticalStep.Value,
+                            (float)(innerDiameter.Value - 2 * packageDiameter.Value),
+                            (float)sideDistance.Value,
+                            (float)tubeDiameter.Value,
+                            (float)distanceFromHorizontalAxis.Value,
+                            (int)packageWidth.Value,
+                            new List<float>()
+                            {
                     0f, (float)leftPassageWidth.Value, (float)centerPassageWidth.Value, float.Parse(rightPassageWidth.Text)
-                });
+                            });
 
             _steamGenerator = new SteamGenerator();
             SetLabels();
             CalculateAndSetFs();
+            pictureBox1.Invalidate();
         }
 
         private void CalculateAndSetFs()
@@ -71,13 +77,6 @@ namespace SteamGeneratorLayout
             fPackBelSide.Text = Math.Round(fPackageSide / fBelowSide, 3).ToString();
             fComPackCenter.Text = Math.Round(fCommonCenter / fPackageCenter, 3).ToString();
             fComPackSide.Text = Math.Round(fCommonSide / fPackageSide, 3).ToString();
-        }
-
-        private void applyButton_Click(object sender, EventArgs e)
-        {
-            SetGeometryAndCreateGenerator();
-            pictureBox1.Invalidate();
-            SetLabels();
         }
 
         private void SetLabels()
@@ -142,13 +141,13 @@ namespace SteamGeneratorLayout
             SaveImage(@"d:/SG.png", 5000, 5);
         }
 
-        private void innerDiameter_ValueChanged(object sender, EventArgs e) => CalculateAndSetPassageWidth();
+        private void innerDiameter_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
 
-        private void sideDistance_ValueChanged(object sender, EventArgs e) => CalculateAndSetPassageWidth();
+        private void sideDistance_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
 
-        private void packageWidth_ValueChanged(object sender, EventArgs e) => CalculateAndSetPassageWidth();
+        private void packageWidth_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
 
-        private void horizontalStep_ValueChanged(object sender, EventArgs e) => CalculateAndSetPassageWidth();
+        private void horizontalStep_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
 
         private void CalculateAndSetPassageWidth()
         {
@@ -165,11 +164,13 @@ namespace SteamGeneratorLayout
         private void leftPassageWidth_ValueChanged(object sender, EventArgs e)
         {
             AdjustPassageWidths(leftPassageWidth, centerPassageWidth);
+            DontCalculateWidths();
         }
 
         private void centerPassageWidth_ValueChanged(object sender, EventArgs e)
         {
             AdjustPassageWidths(centerPassageWidth, leftPassageWidth);
+            DontCalculateWidths();
         }
 
         private void AdjustPassageWidths(NumericUpDown set, NumericUpDown second)
@@ -187,5 +188,13 @@ namespace SteamGeneratorLayout
             }
             rightPassageWidth.Text = Math.Round(first, 1).ToString();
         }
+
+        private void verticalStep_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
+
+        private void tubeDiameter_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
+
+        private void packageDiameter_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
+
+        private void distanceFromHorizontalAxis_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
     }
 }
