@@ -35,7 +35,7 @@ namespace SteamGeneratorLayout
         private bool DoesFit(Vector2 position)
         {
             var vector = position - new Vector2(GeometryData.InnerDiameter / 2);
-            var radiusToTubeCenter = GeometryData.PackageDiameter / 2;
+            var radiusToTubeCenter = GeometryData.PackageDiameter / 2 - GeometryData.TubeDiameter / 2;
             return vector.LengthSquared() <= radiusToTubeCenter * radiusToTubeCenter;
         }
     }

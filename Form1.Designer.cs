@@ -225,9 +225,19 @@ namespace SteamGeneratorLayout
             // 
             this.centerPassageWidth.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.centerPassageWidth.Location = new System.Drawing.Point(110, 502);
+            this.centerPassageWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
             this.centerPassageWidth.Name = "centerPassageWidth";
             this.centerPassageWidth.Size = new System.Drawing.Size(75, 26);
             this.centerPassageWidth.TabIndex = 79;
+            this.centerPassageWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
             this.centerPassageWidth.ValueChanged += new System.EventHandler(this.centerPassageWidth_ValueChanged);
             // 
             // label43
@@ -288,7 +298,7 @@ namespace SteamGeneratorLayout
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanel2.Controls.Add(this.label36, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.label35, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label34, 0, 1);
@@ -350,7 +360,7 @@ namespace SteamGeneratorLayout
             this.label33.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label33.Location = new System.Drawing.Point(250, 1);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(120, 42);
+            this.label33.Size = new System.Drawing.Size(122, 42);
             this.label33.TabIndex = 56;
             this.label33.Text = "Боковой пакет";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -394,7 +404,7 @@ namespace SteamGeneratorLayout
             this.fPackPassSide.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fPackPassSide.Location = new System.Drawing.Point(250, 44);
             this.fPackPassSide.Name = "fPackPassSide";
-            this.fPackPassSide.Size = new System.Drawing.Size(120, 42);
+            this.fPackPassSide.Size = new System.Drawing.Size(122, 42);
             this.fPackPassSide.TabIndex = 51;
             this.fPackPassSide.Text = "label4";
             this.fPackPassSide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -427,7 +437,7 @@ namespace SteamGeneratorLayout
             this.fPackBelSide.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fPackBelSide.Location = new System.Drawing.Point(250, 87);
             this.fPackBelSide.Name = "fPackBelSide";
-            this.fPackBelSide.Size = new System.Drawing.Size(120, 39);
+            this.fPackBelSide.Size = new System.Drawing.Size(122, 39);
             this.fPackBelSide.TabIndex = 52;
             this.fPackBelSide.Text = "label4";
             this.fPackBelSide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -438,7 +448,7 @@ namespace SteamGeneratorLayout
             this.fComPackSide.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fComPackSide.Location = new System.Drawing.Point(250, 127);
             this.fComPackSide.Name = "fComPackSide";
-            this.fComPackSide.Size = new System.Drawing.Size(120, 41);
+            this.fComPackSide.Size = new System.Drawing.Size(122, 41);
             this.fComPackSide.TabIndex = 53;
             this.fComPackSide.Text = "label4";
             this.fComPackSide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -447,9 +457,19 @@ namespace SteamGeneratorLayout
             // 
             this.leftPassageWidth.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.leftPassageWidth.Location = new System.Drawing.Point(12, 502);
+            this.leftPassageWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
             this.leftPassageWidth.Name = "leftPassageWidth";
             this.leftPassageWidth.Size = new System.Drawing.Size(75, 26);
             this.leftPassageWidth.TabIndex = 0;
+            this.leftPassageWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
             this.leftPassageWidth.ValueChanged += new System.EventHandler(this.leftPassageWidth_ValueChanged);
             // 
             // tableLayoutPanel1
@@ -460,7 +480,7 @@ namespace SteamGeneratorLayout
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label37, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label41, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label40, 1, 2);
@@ -598,7 +618,7 @@ namespace SteamGeneratorLayout
             this.label29.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label29.Location = new System.Drawing.Point(284, 1);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(92, 49);
+            this.label29.Size = new System.Drawing.Size(94, 49);
             this.label29.TabIndex = 72;
             this.label29.Text = "Боковой пакет";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -609,7 +629,7 @@ namespace SteamGeneratorLayout
             this.fPassageSide.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fPassageSide.Location = new System.Drawing.Point(284, 51);
             this.fPassageSide.Name = "fPassageSide";
-            this.fPassageSide.Size = new System.Drawing.Size(92, 65);
+            this.fPassageSide.Size = new System.Drawing.Size(94, 65);
             this.fPassageSide.TabIndex = 41;
             this.fPassageSide.Text = "label4";
             this.fPassageSide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -620,7 +640,7 @@ namespace SteamGeneratorLayout
             this.fPackageSide.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fPackageSide.Location = new System.Drawing.Point(284, 117);
             this.fPackageSide.Name = "fPackageSide";
-            this.fPackageSide.Size = new System.Drawing.Size(92, 63);
+            this.fPackageSide.Size = new System.Drawing.Size(94, 63);
             this.fPackageSide.TabIndex = 43;
             this.fPackageSide.Text = "label4";
             this.fPackageSide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -631,7 +651,7 @@ namespace SteamGeneratorLayout
             this.fBelowSide.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fBelowSide.Location = new System.Drawing.Point(284, 181);
             this.fBelowSide.Name = "fBelowSide";
-            this.fBelowSide.Size = new System.Drawing.Size(92, 69);
+            this.fBelowSide.Size = new System.Drawing.Size(94, 69);
             this.fBelowSide.TabIndex = 45;
             this.fBelowSide.Text = "label4";
             this.fBelowSide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -642,7 +662,7 @@ namespace SteamGeneratorLayout
             this.fCommonSide.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fCommonSide.Location = new System.Drawing.Point(284, 251);
             this.fCommonSide.Name = "fCommonSide";
-            this.fCommonSide.Size = new System.Drawing.Size(92, 67);
+            this.fCommonSide.Size = new System.Drawing.Size(94, 67);
             this.fCommonSide.TabIndex = 47;
             this.fCommonSide.Text = "label4";
             this.fCommonSide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -914,6 +934,11 @@ namespace SteamGeneratorLayout
             // 
             this.tubeDiameter.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tubeDiameter.Location = new System.Drawing.Point(203, 207);
+            this.tubeDiameter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
             this.tubeDiameter.Name = "tubeDiameter";
             this.tubeDiameter.Size = new System.Drawing.Size(180, 26);
             this.tubeDiameter.TabIndex = 30;
@@ -986,6 +1011,11 @@ namespace SteamGeneratorLayout
             // 
             this.packageWidth.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.packageWidth.Location = new System.Drawing.Point(12, 207);
+            this.packageWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.packageWidth.Name = "packageWidth";
             this.packageWidth.Size = new System.Drawing.Size(180, 26);
             this.packageWidth.TabIndex = 20;
@@ -1001,7 +1031,7 @@ namespace SteamGeneratorLayout
             this.sideDistance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sideDistance.Location = new System.Drawing.Point(14, 376);
             this.sideDistance.Maximum = new decimal(new int[] {
-            600,
+            1000,
             0,
             0,
             0});
@@ -1047,11 +1077,17 @@ namespace SteamGeneratorLayout
             // 
             // innerDiameter
             // 
+            this.innerDiameter.DecimalPlaces = 1;
             this.innerDiameter.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.innerDiameter.InterceptArrowKeys = false;
             this.innerDiameter.Location = new System.Drawing.Point(12, 61);
             this.innerDiameter.Maximum = new decimal(new int[] {
             5000,
+            0,
+            0,
+            0});
+            this.innerDiameter.Minimum = new decimal(new int[] {
+            1000,
             0,
             0,
             0});
@@ -1067,6 +1103,7 @@ namespace SteamGeneratorLayout
             // 
             // horizontalStep
             // 
+            this.horizontalStep.DecimalPlaces = 2;
             this.horizontalStep.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.horizontalStep.Location = new System.Drawing.Point(12, 156);
             this.horizontalStep.Minimum = new decimal(new int[] {
@@ -1086,6 +1123,7 @@ namespace SteamGeneratorLayout
             // 
             // verticalStep
             // 
+            this.verticalStep.DecimalPlaces = 2;
             this.verticalStep.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.verticalStep.Location = new System.Drawing.Point(203, 156);
             this.verticalStep.Minimum = new decimal(new int[] {

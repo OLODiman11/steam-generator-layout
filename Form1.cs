@@ -71,12 +71,20 @@ namespace SteamGeneratorLayout
             this.fCommonCenter.Text = Math.Round(fCommonCenter, 0).ToString();
             this.fCommonSide.Text = Math.Round(fCommonSide, 0).ToString();
 
-            fPackPassCenter.Text = Math.Round(fPackageCenter / fPassageCenter, 3).ToString();
-            fPackPassSide.Text = Math.Round(fPackageSide / fPassageSide, 3).ToString();
-            fPackBelCenter.Text = Math.Round(fPackageCenter / fBelowCenter, 3).ToString();
-            fPackBelSide.Text = Math.Round(fPackageSide / fBelowSide, 3).ToString();
-            fComPackCenter.Text = Math.Round(fCommonCenter / fPackageCenter, 3).ToString();
-            fComPackSide.Text = Math.Round(fCommonSide / fPackageSide, 3).ToString();
+            if(fPassageCenter != 0)
+                fPackPassCenter.Text = Math.Round(fPackageCenter / fPassageCenter, 3).ToString();
+            if (fPassageSide != 0)
+                fPackPassSide.Text = Math.Round(fPackageSide / fPassageSide, 3).ToString();
+
+            if (fBelowCenter != 0)
+                fPackBelCenter.Text = Math.Round(fPackageCenter / fBelowCenter, 3).ToString();
+            if (fBelowSide != 0)
+                fPackBelSide.Text = Math.Round(fPackageSide / fBelowSide, 3).ToString();
+
+            if (fPackageCenter != 0)
+                fComPackCenter.Text = Math.Round(fCommonCenter / fPackageCenter, 3).ToString();
+            if (fPackageSide != 0)
+                fComPackSide.Text = Math.Round(fCommonSide / fPackageSide, 3).ToString();
         }
 
         private void SetLabels()
@@ -109,14 +117,14 @@ namespace SteamGeneratorLayout
             var vector4 = new Vector4(start, GeometryData.InnerDiameter, GeometryData.InnerDiameter) * ratio;
             g.DrawEllipse(pen, vector4.X, vector4.Y, vector4.Z, vector4.W);
 
-
             var packages = _steamGenerator.Packages;
             var diameter = GeometryData.TubeDiameter;
+            var offset = new Vector2(GeometryData.TubeDiameter / 2);
             foreach (var package in packages)
             {
                 foreach (var tube in package.Tubes)
                 {
-                    vector4 = new Vector4(start + tube, diameter, diameter) * ratio;
+                    vector4 = new Vector4(start + tube - offset, diameter, diameter) * ratio;
                     g.DrawEllipse(pen, vector4.X, vector4.Y, vector4.Z, vector4.W);
                 }
             }
@@ -141,7 +149,14 @@ namespace SteamGeneratorLayout
             SaveImage(@"d:/SG.png", 5000, 5);
         }
 
-        private void innerDiameter_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
+        private void innerDiameter_ValueChanged(object sender, EventArgs e)
+        {
+            var radius = innerDiameter.Value / 2;
+            packageDiameter.Maximum = radius;
+            distanceFromHorizontalAxis.Minimum = -radius;
+            distanceFromHorizontalAxis.Maximum = radius;
+            SetGeometryAndCreateGenerator();
+        }
 
         private void sideDistance_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
 
@@ -179,8 +194,11 @@ namespace SteamGeneratorLayout
             var offset = decimal.Parse(summPassageWidth.Text) - set.Value - first - second.Value;
             if(-offset > first)
             {
-                second.Value += first + offset;
-                first = 0;
+                if (second.Value + first + offset < second.Minimum)
+                    second.Value = second.Minimum;
+                else
+                    second.Value += first + offset;
+                first = horizontalStep.Value;
             }
             else
             {
@@ -191,7 +209,12 @@ namespace SteamGeneratorLayout
 
         private void verticalStep_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
 
-        private void tubeDiameter_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
+        private void tubeDiameter_ValueChanged(object sender, EventArgs e)
+        {
+            horizontalStep.Minimum = tubeDiameter.Value;
+            verticalStep.Minimum = tubeDiameter.Value;
+            SetGeometryAndCreateGenerator();
+        }
 
         private void packageDiameter_ValueChanged(object sender, EventArgs e) => SetGeometryAndCreateGenerator();
 
